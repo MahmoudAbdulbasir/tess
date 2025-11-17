@@ -26,6 +26,6 @@ jobs:
           IMAGE_TAG: latest
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$REPOSITORY:$IMAGE_TAG ./Dockerfile
+          docker buildx build --push -t $DOCKERHUB_USERNAME/$REPOSITORY:$IMAGE_TAG .
           docker push $DOCKERHUB_USERNAME/$REPOSITORY:$IMAGE_TAG
 
